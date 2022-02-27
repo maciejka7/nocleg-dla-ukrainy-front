@@ -44,3 +44,9 @@ export const Navigation = (props: Props) => {
     </NavigationContainer>
   );
 };
+
+export const getStaticProps = async () => {
+  return {
+    props: {}
+  }
+}

@@ -55,3 +55,11 @@ const NavigationMobile = (props: Props) => {
 }
 
 export default NavigationMobile
+
+
+
+export const getStaticProps = async () => {
+  return {
+    props: {}
+  }
+}
