@@ -1,6 +1,3 @@
-import { Button } from "@chakra-ui/react";
-import Link from "next/link";
-import React from "react";
 import LoginButton from "./LoginButton";
 import NavigationItem from "./NavigationItem";
 import { routes } from "./routes";
