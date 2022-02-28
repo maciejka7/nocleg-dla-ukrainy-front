@@ -11,4 +11,4 @@ export interface Offer {
     active: boolean;
 }
 
-export type AddOfferFormData = Omit<Offer, "id">;
+export type AddOfferFormData = Omit<Offer, "id" | "created" | "active">;
