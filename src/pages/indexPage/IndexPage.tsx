@@ -1,6 +1,5 @@
 import React from "react";
-import HeroSection from "./heroSection";
-import LastOfferSection from "./lastOfferSection";
+import { LastOfferSection, HeroSection } from "../../organisms";
 
 type Props = {};
 

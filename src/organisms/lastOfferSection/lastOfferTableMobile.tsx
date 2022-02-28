@@ -2,8 +2,8 @@ import { Center, Flex, SimpleGrid, Button, Text } from "@chakra-ui/react";
 import React from "react";
 import { Offer } from "../../services/addOffer.types";
 import { formatDate } from "../../utils";
-import { ListItemSpace } from "./listItemSpace";
-import { ListItem } from "./listItem";
+import { ListItemSpace } from "../../components/ListItem/listItemSpace";
+import { ListItem } from "../../components/ListItem/listItem";
 import Link from "next/link";
 import { Search2Icon } from "@chakra-ui/icons";
 
