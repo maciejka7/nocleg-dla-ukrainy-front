@@ -5,7 +5,7 @@ import { Offer, AddOfferFormData } from './addOffer.types'
 export const createOffertRequest = async (offer: AddOfferFormData ) => {
 
     const result: Offer = {
-        categoryId: v4(),
+        id: v4(),
         title: offer.title,
         description: offer.description,
         telephone: offer.telephone,
@@ -13,5 +13,8 @@ export const createOffertRequest = async (offer: AddOfferFormData ) => {
         location: offer.location,
         freeSpaceFrom: offer.freeSpaceFrom,
         freeSpaceTo: offer.freeSpaceTo,
+        created: new Date().toISOString(),
+        active: false
+
     }
 }
