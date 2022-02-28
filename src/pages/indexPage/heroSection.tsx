@@ -35,21 +35,21 @@ const HeroSection = (props: Props) => {
                 fontWeight={600}
                 fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
               >
-                <Text as="span" position="relative">
-                  Pomagamy
-                </Text>
-                <br />
                 <Text as="span" color={appCustomTheme.colors.flag.blue.hex}>
-                  Ukra
+                  PO
                 </Text>
                 <Text as="span" color={appCustomTheme.colors.flag.yellow.hex}>
-                  inie
+                  MOC
                 </Text>
+                <br/>
+                <Text as="span" position="relative">
+                  UKRAINIE
+                </Text>
+                <br />
               </Heading>
               <Text color="gray.500">
-                Snippy is a rich coding snippets app that lets you create your
-                own code snippets, categorize them, and even sync them in the
-                cloud so you can use them anywhere. All that is free!
+                Wiarygodne źródło ofert pracy, wsparcia dla osób, które pochodzą z Ukrainy.
+
               </Text>
               <Stack
                 justifyContent="center"
@@ -64,7 +64,7 @@ const HeroSection = (props: Props) => {
                     leftIcon={<FaFacebook />}
                   >
                     <Center>
-                      <Text>Zaloguj prze Facebook</Text>
+                      <Text>Zaloguj przez Facebook</Text>
                     </Center>
                   </Button>
                 </Center>

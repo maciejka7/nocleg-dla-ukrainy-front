@@ -134,7 +134,7 @@ const NewOfferPage = (props: Props) => {
                 color="white"
                 placement="top"
                 isOpen={showTooltip}
-                label={`${sliderValue}%`}
+                label={`${sliderValue}`}
               >
                 <SliderThumb />
               </Tooltip>

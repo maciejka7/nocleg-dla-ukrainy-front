@@ -9,8 +9,12 @@ export const getOfferById = (id: string) => {
     });
 }
 
+type MockedDataResponst = {
+  content: Offer[];
+  [x: string]: any;
+}
 
-export const mockedData = {
+export const mockedData: MockedDataResponst = {
     content: [
       {
         id: "86ff8179-fb1e-4156-88f2-b8dd5b97b532",
@@ -31,6 +35,30 @@ export const mockedData = {
         telephone: "tel 2",
         contactName: "contact 2",
         location: "locale 2",
+        freeSpaceFrom: 14,
+        freeSpaceTo: 18,
+        active: false,
+        created: "2022-02-27T12:13:19.706423",
+      },
+      {
+        id: "86ff8123-fb1e-4156-f288-b8dd5b97b532",
+        title: "title 3",
+        description: "desc 3",
+        telephone: "tel 3",
+        contactName: "contact 3",
+        location: "locale 3",
+        freeSpaceFrom: 14,
+        freeSpaceTo: 18,
+        active: false,
+        created: "2022-02-27T12:13:19.706423",
+      },
+      {
+        id: "86ff8321-fb1e-4156-f288-b8dd5b97b532",
+        title: "title 4",
+        description: "desc 4",
+        telephone: "tel 4",
+        contactName: "contact 4",
+        location: "locale 4",
         freeSpaceFrom: 14,
         freeSpaceTo: 18,
         active: false,

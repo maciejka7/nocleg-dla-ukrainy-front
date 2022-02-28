@@ -1,5 +1,5 @@
 export interface Offer {
-    categoryId: string;
+    id: string;
     title: string;
     description: string;
     telephone: string;
@@ -7,6 +7,8 @@ export interface Offer {
     location: string;
     freeSpaceFrom: number;
     freeSpaceTo: number;
+    created: string;
+    active: boolean;
 }
 
-export type AddOfferFormData = Omit<Offer, "categoryId">;
+export type AddOfferFormData = Omit<Offer, "id">;

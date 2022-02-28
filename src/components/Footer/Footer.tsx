@@ -114,6 +114,9 @@ import Image from 'next/image';
         bg={useColorModeValue('gray.50', 'gray.900')}
         color={useColorModeValue('gray.700', 'gray.200')}>
         <Container as={Stack} maxW={'6xl'} py={10}>
+          <Box>
+            Pomoc dla osób z Ukrainy | Допомога людям з України
+          </Box>
           <SimpleGrid
             templateColumns={{ sm: '1fr 1fr', md: '1fr 1fr' }}
             spacing={8}>
@@ -122,7 +125,7 @@ import Image from 'next/image';
                 <Logo color={useColorModeValue('gray.700', 'white')} /> <Text>Nocel dla Ukrainy</Text>
               </Box>
               <Text fontSize={'sm'}>
-                © 2022 Nocelg dla Ukrainy. All rights reserved
+                © 2022 Nocleg dla Ukrainy. All rights reserved
               </Text>
 
             </Stack>
