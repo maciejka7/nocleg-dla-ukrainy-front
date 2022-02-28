@@ -24,7 +24,7 @@ const OfferDetails = (props: Props) => {
   const router = useRouter();
   const { id } = router.query;
 
-  const [currentOffer, setCurrentOffer] = useState<Offer>();
+  const [currentOffer, setCurrentOffer] = useState<any>();
 
   React.useEffect(() => {
     if (id && typeof id === "string") {
