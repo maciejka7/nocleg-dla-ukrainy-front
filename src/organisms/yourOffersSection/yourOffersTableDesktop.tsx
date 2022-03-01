@@ -1,4 +1,4 @@
-import { EditIcon, DeleteIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { EditIcon } from "@chakra-ui/icons";
 import {
   Table,
   Thead,
@@ -10,14 +10,12 @@ import {
   Text,
   Button,
 } from "@chakra-ui/react";
-import { format } from "date-fns";
-import { da, pl } from "date-fns/locale";
 import Link from "next/link";
 import React from "react";
 import { Offer } from "../../services/addOffer.types";
 import { formatDate } from "../../utils";
-import ActivateButton from './ActivateButton';
-import DeleteButton from './DeleteButton';
+import ActivateButton from "./ActivateButton";
+import DeleteButton from "./DeleteButton";
 
 type Props = {
   data: Offer[];
@@ -41,7 +39,9 @@ const YourOffersTableDesktop = (props: Props) => {
         <Tbody>
           {data.map((item) => (
             <Tr key={item.id}>
-              <Td>{item.voivodeship} - {item.city}</Td>
+              <Td>
+                {item.voivodeship} - {item.city}
+              </Td>
               <Td>{item.title}</Td>
               <Td>{formatDate(new Date(item.created))}</Td>
               <Td isNumeric>
@@ -50,14 +50,10 @@ const YourOffersTableDesktop = (props: Props) => {
                     <EditIcon />
                     <Text ml={4}>Edytuj</Text>
                   </Button>
-                </Link>  
+                </Link>
               </Td>
-              <Td isNumeric>
-              {ActivateButton(item, "sm")}
-              </Td>
-              <Td isNumeric>
-                  {DeleteButton(item, 'sm')}
-                </Td>
+              <Td isNumeric>{ActivateButton(item, "sm")}</Td>
+              <Td isNumeric>{DeleteButton(item, "sm")}</Td>
             </Tr>
           ))}
         </Tbody>
@@ -65,6 +61,5 @@ const YourOffersTableDesktop = (props: Props) => {
     </Box>
   );
 };
-
 
 export default YourOffersTableDesktop;

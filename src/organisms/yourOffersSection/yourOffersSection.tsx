@@ -1,10 +1,4 @@
-
-import {
-  Flex,
-  Heading,
-  Text,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Flex, Heading, Text, useMediaQuery } from "@chakra-ui/react";
 import React from "react";
 import { getBreakpoints } from "../../utils";
 import { mockedData } from "../../utils/mockedData";
@@ -26,10 +20,13 @@ export const YourOffersSection = (props: Props) => {
       <Text textAlign="center" size="xl" color={"gray.600"} mt={4}>
         Zarządzaj swoimi ogłoszeniami
       </Text>
-      {!isTablet && !isDesktop && <YourOffersTableMobile  data={mockedData.content} />}
-      {isTablet && !isDesktop && <YourOffersTableTablet  data={mockedData.content} />}
-{isDesktop && <YourOffersTableDesktop data={mockedData.content} />}
-
+      {!isTablet && !isDesktop && (
+        <YourOffersTableMobile data={mockedData.content} />
+      )}
+      {isTablet && !isDesktop && (
+        <YourOffersTableTablet data={mockedData.content} />
+      )}
+      {isDesktop && <YourOffersTableDesktop data={mockedData.content} />}
     </Flex>
   );
 };

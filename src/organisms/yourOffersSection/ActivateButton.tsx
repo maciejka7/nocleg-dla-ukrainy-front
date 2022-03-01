@@ -10,27 +10,37 @@ import {
   Text,
   Button,
 } from "@chakra-ui/react";
+import { activateOffer, deactivateOffer } from "../../services/offerServices";
 
 const ActivateButton = (item: any, size: string) => {
-    if(item.active){
-  return (         
-                    <Button size={size} colorScheme="blue" variant='outline' onClick={() =>{ActivateOffer(item)}}>
-                      <ViewOffIcon />
-                      <Text ml={4}>Dezaktywuj</Text>
-                    </Button>
-  );
+  if (item.active) {
+    return (
+      <Button
+        size={size}
+        colorScheme="blue"
+        variant="outline"
+        onClick={() => {
+          deactivateOffer(item);
+        }}
+      >
+        <ViewOffIcon />
+        <Text ml={4}>Dezaktywuj</Text>
+      </Button>
+    );
   }
-  return (         
-    <Button size={size} colorScheme="blue" variant='outline' onClick={() =>{ActivateOffer(item)}}>
+  return (
+    <Button
+      size={size}
+      colorScheme="blue"
+      variant="outline"
+      onClick={() => {
+        activateOffer(item);
+      }}
+    >
       <ViewIcon />
       <Text ml={4}>Aktywuj</Text>
     </Button>
   );
-  };
-  
-  const ActivateOffer = (item: any) => {
-  item.active = !item.active;
-  console.log(item.active);
-  };
+};
 
-  export default ActivateButton;
+export default ActivateButton;

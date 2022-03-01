@@ -1,26 +1,13 @@
-import { EditIcon, DeleteIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import {
-  Center,
-  Flex,
-  SimpleGrid,
-  Table,
-  Thead,
-  Tr,
-  Th,
-  Tbody,
-  Td,
-  Box,
-  Text,
-  Button,
-} from "@chakra-ui/react";
+import { EditIcon } from "@chakra-ui/icons";
+import { Center, Flex, SimpleGrid, Text, Button } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import { Offer } from "../../services/addOffer.types";
 import { formatDate } from "../../utils";
 import { ListItemSpace } from "../../components/ListItem/listItemSpace";
 import { ListItem } from "../../components/ListItem/listItem";
-import ActivateButton from './ActivateButton';
-import DeleteButton from './DeleteButton';
+import ActivateButton from "./ActivateButton";
+import DeleteButton from "./DeleteButton";
 
 type Props = {
   data: Offer[];
@@ -29,7 +16,7 @@ const YourOffersTableMobile = (props: Props) => {
   const { data } = props;
 
   return (
-      <Center py={6}>
+    <Center py={6}>
       <Flex direction="column" wrap="nowrap" w="full">
         {data.map((item) => (
           <Flex
@@ -43,7 +30,7 @@ const YourOffersTableMobile = (props: Props) => {
             w="full"
           >
             <SimpleGrid columns={2} spacing={10} mb={4}>
-            <ListItemSpace
+              <ListItemSpace
                 data={{ from: item.voivodeship, to: item.city }}
                 label="Lokalizacja"
               />
@@ -56,14 +43,14 @@ const YourOffersTableMobile = (props: Props) => {
               />
             </SimpleGrid>
             <SimpleGrid columns={1} spacing={2} mb={2}>
-            <Link passHref href={`/edytuj-ogloszenie/${item.id}`}>
-                  <Button size="md" colorScheme="blue">
-                    <EditIcon />
-                    <Text ml={4}>Edytuj</Text>
-                  </Button>
-                </Link>  
-            {ActivateButton(item, 'md')}
-            {DeleteButton(item, 'md')}
+              <Link passHref href={`/edytuj-ogloszenie/${item.id}`}>
+                <Button size="md" colorScheme="blue">
+                  <EditIcon />
+                  <Text ml={4}>Edytuj</Text>
+                </Button>
+              </Link>
+              {ActivateButton(item, "md")}
+              {DeleteButton(item, "md")}
             </SimpleGrid>
           </Flex>
         ))}
@@ -71,6 +58,5 @@ const YourOffersTableMobile = (props: Props) => {
     </Center>
   );
 };
-
 
 export default YourOffersTableMobile;
