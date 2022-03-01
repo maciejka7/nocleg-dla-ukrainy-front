@@ -64,17 +64,19 @@ export const HeroSection = (props: Props) => {
               >
                 <Center p={8}>
 
-                  <Button
-                    w="full"
-                    maxW="md"
-                    colorScheme="facebook"
-                    leftIcon={<FaFacebook />}
-                    >
-                    <Center>
-                    
-                      <Text>Zaloguj przez Facebook</Text>
-                    </Center>
-                  </Button>
+                    <form action="http://localhost:8080/signin/facebook" method="post">
+                      <Button
+                        w="full"
+                        maxW="md"
+                        colorScheme="facebook"
+                        leftIcon={<FaFacebook />}
+                        type="submit"
+                        >
+                        <Center>
+                          <Text>Zaloguj przez Facebook</Text>
+                        </Center>
+                    </Button>
+                    </form>
                 </Center>
               </Stack>
             </Stack>
