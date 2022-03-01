@@ -1,6 +1,4 @@
-import { EditIcon } from "@chakra-ui/icons";
-import { Center, Flex, SimpleGrid, Text, Button } from "@chakra-ui/react";
-import Link from "next/link";
+import { Center, Flex, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import { Offer } from "../../services/addOffer.types";
 import { formatDate } from "../../utils";
@@ -8,10 +6,14 @@ import { ListItemSpace } from "../../components/ListItem/listItemSpace";
 import { ListItem } from "../../components/ListItem/listItem";
 import ActivateButton from "./ActivateButton";
 import DeleteButton from "./DeleteButton";
+import EditButton from "./EditButton";
+
+const btnSize = "md";
 
 type Props = {
   data: Offer[];
 };
+
 const YourOffersTableMobile = (props: Props) => {
   const { data } = props;
 
@@ -36,21 +38,17 @@ const YourOffersTableMobile = (props: Props) => {
               />
               <ListItem data={item.title} label="Tytuł" />
             </SimpleGrid>
-            <SimpleGrid columns={1} spacing={10} mb={4}>
+            <SimpleGrid columns={2} spacing={10} mb={4}>
               <ListItem
                 data={formatDate(new Date(item.created))}
                 label="Dodano"
               />
+              <ListItem data={item.active ? "Aktywne" : "Nieaktywne"} label="Status" />
             </SimpleGrid>
             <SimpleGrid columns={1} spacing={2} mb={2}>
-              <Link passHref href={`/edytuj-ogloszenie/${item.id}`}>
-                <Button size="md" colorScheme="blue">
-                  <EditIcon />
-                  <Text ml={4}>Edytuj</Text>
-                </Button>
-              </Link>
-              {ActivateButton(item, "md")}
-              {DeleteButton(item, "md")}
+            {EditButton(item, btnSize)}
+              {ActivateButton(item, btnSize)}
+              {DeleteButton(item, btnSize)}
             </SimpleGrid>
           </Flex>
         ))}

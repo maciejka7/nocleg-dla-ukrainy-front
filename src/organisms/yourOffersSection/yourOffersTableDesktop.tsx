@@ -1,4 +1,3 @@
-import { EditIcon } from "@chakra-ui/icons";
 import {
   Table,
   Thead,
@@ -7,32 +6,34 @@ import {
   Tbody,
   Td,
   Box,
-  Text,
-  Button,
 } from "@chakra-ui/react";
-import Link from "next/link";
 import React from "react";
 import { Offer } from "../../services/addOffer.types";
 import { formatDate } from "../../utils";
 import ActivateButton from "./ActivateButton";
 import DeleteButton from "./DeleteButton";
+import EditButton from "./EditButton";
+
+const btnSize = "sm";
 
 type Props = {
   data: Offer[];
 };
+
 const YourOffersTableDesktop = (props: Props) => {
   const { data } = props;
 
   return (
-    <Box padding={20} paddingTop={5}>
+    <Box padding={2} paddingTop={5}>
       <Table mt={4} variant="simple">
         <Thead>
           <Tr>
             <Th>Lokalizacja</Th>
             <Th>Tytuł</Th>
             <Th>Dodano</Th>
+            <Th>Status</Th>
             <Th isNumeric>Edytuj</Th>
-            <Th isNumeric>Aktywuj</Th>
+            <Th isNumeric>Zmień status</Th>
             <Th isNumeric>Usuń</Th>
           </Tr>
         </Thead>
@@ -44,16 +45,12 @@ const YourOffersTableDesktop = (props: Props) => {
               </Td>
               <Td>{item.title}</Td>
               <Td>{formatDate(new Date(item.created))}</Td>
+              <Td>{item.active ? "Aktywne" : "Nieaktywne"}</Td>
               <Td isNumeric>
-                <Link passHref href={`/edytuj-ogloszenie/${item.id}`}>
-                  <Button size="sm" colorScheme="blue">
-                    <EditIcon />
-                    <Text ml={4}>Edytuj</Text>
-                  </Button>
-                </Link>
+                {EditButton(item, btnSize)}
               </Td>
-              <Td isNumeric>{ActivateButton(item, "sm")}</Td>
-              <Td isNumeric>{DeleteButton(item, "sm")}</Td>
+              <Td isNumeric>{ActivateButton(item, btnSize)}</Td>
+              <Td isNumeric>{DeleteButton(item, btnSize)}</Td>
             </Tr>
           ))}
         </Tbody>
