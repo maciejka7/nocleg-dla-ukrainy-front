@@ -2,6 +2,11 @@ import { endpoints } from './endpoints';
 import axios from 'axios'
 import { Offer, AddOfferFormData } from './addOffer.types'
 
+export type ListOfferParams = {
+    size?:number
+    categoryId: string
+    voivodeshipId?:number
+}
 
 export const createOffer = (offer: AddOfferFormData ) => {
     console.log(offer);
@@ -10,7 +15,16 @@ export const createOffer = (offer: AddOfferFormData ) => {
         .post(endpoints.createOffer, offer)
 }
 
-export const listOffers = () => {
+export const listOffers = async (params: ListOfferParams) => {
+
+    const size = params.size || 10
+    
+    const result = await axios.get(`${endpoints.listOffer}?size=${size}&categoryId=${params.categoryId}`, {headers: {'Content-Type': 'application/json'}})
+    console.log('r', result);
+    
+}
+
+export const listOffersMock = () => {
     
     return {
         "content": [
