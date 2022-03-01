@@ -24,7 +24,7 @@ export const LastOfferSection = (props: Props) => {
         Ostatnie ogłoszenia:
       </Heading>
       <Text textAlign="center" size="xl" color={"gray.600"} mt={4}>
-        Przeglądaj najnowesze ogłoszenia dodane przez naszych użytkowników
+        Przeglądaj najnowsze ogłoszenia dodane przez naszych użytkowników
       </Text>
 
       {!isTablet && !isDekstop && <LastOfferTableMobile data={mockedData.content}/>}
