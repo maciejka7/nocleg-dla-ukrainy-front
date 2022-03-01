@@ -6,10 +6,8 @@ import { Offer, AddOfferFormData } from './addOffer.types'
 export const createOffer = (offer: AddOfferFormData ) => {
     console.log(offer);
     
-    axios
-        .post(endpoints.createOffer, offer, {headers: {'Content-Type': 'application/json'}})
-        .then(response => { console.log(response.data) })
-        .catch(error => { console.log(error) })
+    return axios
+        .post(endpoints.createOffer, offer)
 }
 
 export const listOffers = () => {

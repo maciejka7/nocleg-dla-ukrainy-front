@@ -9,7 +9,7 @@ const LoginButton = (props: Props) => {
     <Link href="/logowanie" passHref>
       <a>
         <Button colorScheme="blue" variant="outline">
-          Login
+          Zaloguj się
         </Button>
       </a>
     </Link>

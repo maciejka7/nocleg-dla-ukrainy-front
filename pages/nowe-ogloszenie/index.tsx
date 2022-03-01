@@ -1,5 +1,5 @@
 import React, { BaseSyntheticEvent } from "react";
-
+import PhoneInput from "react-phone-input-2";
 import {
   Box,
   Button,
@@ -8,6 +8,7 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
+  InputGroup,
   RangeSlider,
   RangeSliderFilledTrack,
   RangeSliderThumb,
@@ -16,14 +17,14 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
+import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addOfferSchema } from "../../src/organisms/addOfferForm/addOffer.schema";
 import { voivodeshipsList } from "../../src/models/voivodeships";
 import { mockedCategoriesData } from "../../src/models/categories";
 import { createOffer } from "../../src/services/offerServices";
 import { useRouter } from "next/router";
+import { DevTool } from "@hookform/devtools";
 
 type Props = {};
 
@@ -32,7 +33,7 @@ const NewOfferPage = (props: Props) => {
   const [sliderValue, setSliderValue] = React.useState(sliderDefaultValue);
   const [showTooltip, setShowTooltip] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
-
+    
   const router = useRouter();
 
   React.useEffect(() => {
@@ -45,6 +46,7 @@ const NewOfferPage = (props: Props) => {
     setError,
     setValue,
     control,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(addOfferSchema),
@@ -52,6 +54,7 @@ const NewOfferPage = (props: Props) => {
   });
 
   const onSubmit = (data: any) => {
+    console.log("submit");
     setIsLoading(true);
     const dataToSend = {
       ...data,
@@ -60,8 +63,14 @@ const NewOfferPage = (props: Props) => {
       freeSpaceTo: sliderValue[1],
     };
     delete dataToSend.confirmTelephone;
-    createOffer(dataToSend);
-    setTimeout(() => { setIsLoading(false); router.push("/dodano-ogloszenie")}, 2000);
+    createOffer(dataToSend)
+      .then(response => { console.log(response.data) })
+      .catch(error => { console.log(error) });
+    // console.log(dataToSend);
+    // setTimeout(() => {
+    //   setIsLoading(false);
+    //   router.push("/dodano-ogloszenie");
+    // }, 2000);
   };
 
   const handleSelectChange = (e: BaseSyntheticEvent, name: string) => {
@@ -77,13 +86,21 @@ const NewOfferPage = (props: Props) => {
       p={5}
     >
       <Box justifySelf="flex-end">
-        <Text fontSize="3xl" fontWeight="bold"> Wypełnij formularz: </Text>
-        <Text fontSize="lg" color="gray.600"> Wypełniajac formularz pomagasz innym </Text>
-        <Text fontSize="lg" color="gray.600"> Pamiętaj aby podawać tylko prawdziwe informacje </Text>
-
+        <Text fontSize="3xl" fontWeight="bold">
+          {" "}
+          Wypełnij formularz:{" "}
+        </Text>
+        <Text fontSize="lg" color="gray.600">
+          {" "}
+          Wypełniajac formularz pomagasz innym{" "}
+        </Text>
+        <Text fontSize="lg" color="gray.600">
+          {" "}
+          Pamiętaj aby podawać tylko prawdziwe informacje{" "}
+        </Text>
       </Box>
       <Box
-        maxW={["95vw", '70vw']}
+        maxW={["95vw", "70vw"]}
         w={"full"}
         mt={8}
         mb={20}
@@ -99,7 +116,13 @@ const NewOfferPage = (props: Props) => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Box w={['100%' , '50%']} pt={[2,5]} pb={[2,5]} pr={[5,5]} pl={[5,5]}>
+            <Box
+              w={["100%", "50%"]}
+              pt={[2, 5]}
+              pb={[2, 5]}
+              pr={[5, 5]}
+              pl={[5, 5]}
+            >
               <FormControl isInvalid={errors.categoryId} isRequired>
                 <FormLabel htmlFor="categoryId">Kategoria</FormLabel>
                 <Select
@@ -122,7 +145,13 @@ const NewOfferPage = (props: Props) => {
               </FormControl>
             </Box>
 
-            <Box w={['100%' , '50%']} pt={[2,5]} pb={[2,5]} pr={[5,5]} pl={[5,5]}>
+            <Box
+              w={["100%", "50%"]}
+              pt={[2, 5]}
+              pb={[2, 5]}
+              pr={[5, 5]}
+              pl={[5, 5]}
+            >
               <FormControl isInvalid={errors.title} isRequired>
                 <FormLabel htmlFor="Title">Title</FormLabel>
                 <Input
@@ -144,7 +173,13 @@ const NewOfferPage = (props: Props) => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Box w={['100%' , '50%']} pt={[2,5]} pb={[2,5]} pr={[5,5]} pl={[5,5]}>
+            <Box
+              w={["100%", "50%"]}
+              pt={[2, 5]}
+              pb={[2, 5]}
+              pr={[5, 5]}
+              pl={[5, 5]}
+            >
               <FormControl isInvalid={errors.voivodeship} isRequired>
                 <FormLabel htmlFor="city">Województwo</FormLabel>
 
@@ -168,7 +203,13 @@ const NewOfferPage = (props: Props) => {
               </FormControl>
             </Box>
 
-            <Box w={['100%' , '50%']} pt={[2,5]} pb={[2,5]} pr={[5,5]} pl={[5,5]}>
+            <Box
+              w={["100%", "50%"]}
+              pt={[2, 5]}
+              pb={[2, 5]}
+              pr={[5, 5]}
+              pl={[5, 5]}
+            >
               <FormControl isInvalid={errors.city} isRequired>
                 <FormLabel htmlFor="city">Miasto:</FormLabel>
                 <Input
@@ -190,7 +231,13 @@ const NewOfferPage = (props: Props) => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Box w={['100%' , '50%']} pt={[2,5]} pb={[2,5]} pr={[5,5]} pl={[5,5]}>
+            <Box
+              w={["100%", "50%"]}
+              pt={[2, 5]}
+              pb={[2, 5]}
+              pr={[5, 5]}
+              pl={[5, 5]}
+            >
               <FormControl isInvalid={errors.description} isRequired>
                 <FormLabel htmlFor="city">Opis</FormLabel>
 
@@ -208,15 +255,44 @@ const NewOfferPage = (props: Props) => {
               </FormControl>
             </Box>
 
-            <Box w={['100%' , '50%']} pt={[2,5]} pb={[2,5]} pr={[5,5]} pl={[5,5]}>
+            <Box
+              w={["100%", "50%"]}
+              pt={[2, 5]}
+              pb={[2, 5]}
+              pr={[5, 5]}
+              pl={[5, 5]}
+            >
               <FormControl isInvalid={errors.telephone} isRequired>
                 <FormLabel htmlFor="telephone">Telefon:</FormLabel>
-                <Input
-                  placeholder="Telefon"
-                  id="telephone"
-                  type="tel"
-                  {...register("telephone")}
+
+                <Controller
+                  control={control}
+                  name="telephone"
+                  render={({
+                    field,
+                    fieldState: { invalid, isTouched, isDirty, error },
+                    formState,
+                  }) => (
+                    <>
+                      <PhoneInput
+                        {...field}
+                        inputClass="phoneInput"
+                        disableDropdown={true}
+                        disableCountryCode={true}
+                        country={"pl"}
+                        onlyCountries={["pl"]}
+                        specialLabel={""}
+                        placeholder="Telefon"
+                        inputProps={{
+                          name: "telephone",
+                          id: "telephone",
+                          type: "tel",
+                        }}
+                      />
+                    </>
+                  )}
                 />
+
                 {errors.telephone?.message && (
                   <FormErrorMessage>
                     {errors.telephone?.message}
@@ -231,12 +307,34 @@ const NewOfferPage = (props: Props) => {
                 <FormLabel htmlFor="confirmTelephone">
                   Potwierdz numer telefonu:
                 </FormLabel>
-                <Input
-                  placeholder="Telefon"
-                  id="confirmTelephone"
-                  type="tel"
-                  {...register("confirmTelephone")}
+                <Controller
+                  control={control}
+                  name="confirmTelephone"
+                  render={({
+                    field,
+                    fieldState: { invalid, isTouched, isDirty, error },
+                    formState,
+                  }) => (
+                    <>
+                      <PhoneInput
+                        {...field}
+                        inputClass="phoneInput"
+                        disableDropdown={true}
+                        disableCountryCode={true}
+                        country={"pl"}
+                        onlyCountries={["pl"]}
+                        specialLabel={""}
+                        placeholder="Telefon"
+                        inputProps={{
+                          name: "confirmTelephone",
+                          id: "confirmTelephone",
+                          type: "tel",
+                        }}
+                      />
+                    </>
+                  )}
                 />
+
                 {errors.confirmTelephone?.message && (
                   <FormErrorMessage>
                     {errors.confirmTelephone?.message}
@@ -252,7 +350,13 @@ const NewOfferPage = (props: Props) => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Box w={['100%' , '50%']} pt={[2,5]} pb={[2,5]} pr={[5,5]} pl={[5,5]}>
+            <Box
+              w={["100%", "50%"]}
+              pt={[2, 5]}
+              pb={[2, 5]}
+              pr={[5, 5]}
+              pl={[5, 5]}
+            >
               <FormControl isInvalid={errors.description} isRequired>
                 <FormLabel htmlFor="city">Ilość wolnych miejsc</FormLabel>
                 <RangeSlider
@@ -280,17 +384,24 @@ const NewOfferPage = (props: Props) => {
               </FormControl>
             </Box>
 
-            <Flex w={['100%' , '50%']} pt={[2,5]} pb={[2,5]} pr={[5,5]} pl={[5,5]} justifyContent="space-between">
-              <Button type="reset" colorScheme="yellow" variant="outline">
+            <Flex
+              w={["100%", "50%"]}
+              pt={[2, 5]}
+              pb={[2, 5]}
+              pr={[5, 5]}
+              pl={[5, 5]}
+              justifyContent="space-between"
+            >
+              <Button onClick={() => reset()} colorScheme="yellow" variant="outline">
                 Wyczyść
               </Button>
               <Button
                 type="submit"
-                disabled={Object.keys(errors).length ? true : false}
+                // disabled={Object.keys(errors).length ? true : false}
                 colorScheme="blue"
                 isLoading={isLoading ? true : false}
                 isDisabled={isLoading ? true : false}
-                loadingText='Dodawanie...'
+                loadingText="Dodawanie..."
               >
                 Dodaj
               </Button>
@@ -298,6 +409,7 @@ const NewOfferPage = (props: Props) => {
           </Flex>
         </form>
       </Box>
+      <DevTool control={control} />
     </Flex>
   );
 };

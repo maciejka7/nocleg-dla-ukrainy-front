@@ -1,1 +1,1 @@
-export const getPageTitle = (text: string) => `>Nocleg dla Ukrainy 🇺🇦 | ${text}`
+export const getPageTitle = (text: string) => `Nocleg dla Ukrainy 🇺🇦 | ${text}`
