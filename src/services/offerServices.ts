@@ -28,7 +28,7 @@ export const deactivateOffer = async (offer: UpdateOfferFormData) => {
 
 
 export const deletOffer = async (offer: UpdateOfferFormData) => {
-  const id = offer.id;
+  const {id} = offer;
   console.log(id);
   await axios.delete(`${endpoints.createOffer}/${id}`);
 };
@@ -93,3 +93,4 @@ export const listOffersMock = () => {
         "numberOfElements": 2,
         "empty": false
     }
+};
