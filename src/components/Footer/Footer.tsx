@@ -142,7 +142,7 @@ type StatusResponse = {
             spacing={8}>
             <Stack spacing={6}>
               <Box>
-                <Logo color={useColorModeValue('gray.700', 'white')} /> <Text>Nocel dla Ukrainy</Text>
+                <Logo color={useColorModeValue('gray.700', 'white')} /> <Text>Nocleg dla Ukrainy</Text>
               </Box>
               <Text fontSize={'sm'}>
                 © 2022 Nocleg dla Ukrainy. All rights reserved

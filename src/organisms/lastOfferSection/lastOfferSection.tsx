@@ -39,7 +39,7 @@ export const LastOfferSection = (props: Props) => {
 
   React.useEffect(() => {
     getCategories()
-      .then(response => { 
+      .then((response: any) => { 
         if(response.status === 200 && response.data && 'data' in response) {
           setCategories(response.data)
           setCurrentCategory(response.data[0]);   
