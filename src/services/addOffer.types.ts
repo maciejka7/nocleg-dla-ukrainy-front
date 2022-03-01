@@ -25,3 +25,10 @@ export type AddOfferFormData = Pick<
   | "freeSpaceFrom"
   | "freeSpaceTo"
 >;
+
+
+export type UpdateOfferFormData = Pick<
+  Offer,
+  | "id"
+  | "active"
+>;

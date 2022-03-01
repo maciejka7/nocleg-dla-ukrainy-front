@@ -7,8 +7,8 @@ export type CategoriesResponseType = {
   description: string;
 };
 
-export const getCategories = () => {
-  return axios.get<CategoriesResponseType[]>(endpoints.categories, {
-    headers: { "Content-Type": "application/json" },
-  });
-};
+export const getCategories = async () => {
+   await axios
+        .get<CategoriesResponseType[]>(endpoints.categories, { headers: { 'Content-Type': 'application/json' } })
+        
+}

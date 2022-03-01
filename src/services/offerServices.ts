@@ -1,6 +1,6 @@
-import { endpoints } from './endpoints';
-import axios from 'axios'
-import { Offer, AddOfferFormData } from './addOffer.types'
+import { endpoints } from "./endpoints";
+import axios from "axios";
+import { AddOfferFormData, UpdateOfferFormData } from "./addOffer.types";
 
 export type ListOfferParams = {
     size?:number
@@ -8,12 +8,30 @@ export type ListOfferParams = {
     voivodeshipId?:number
 }
 
-export const createOffer = (offer: AddOfferFormData ) => {
-    console.log(offer);
     
-    return axios
-        .post(endpoints.createOffer, offer)
-}
+export const createOffer = async (offer: AddOfferFormData) => {
+  return await axios.post(endpoints.createOffer, offer);
+};
+
+
+export const activateOffer = async (offer: UpdateOfferFormData) => {
+  const { id } = offer;
+  console.log(id);
+  await axios.post(`${endpoints.createOffer}/${id}/activate`, offer);
+};
+
+export const deactivateOffer = async (offer: UpdateOfferFormData) => {
+  const  { id } = offer;
+  console.log(id);
+  await axios.post(`${endpoints.createOffer}/${id}/deactivate`, offer);
+};
+
+
+export const deletOffer = async (offer: UpdateOfferFormData) => {
+  const {id} = offer;
+  console.log(id);
+  await axios.delete(`${endpoints.createOffer}/${id}`);
+};
 
 export const listOffers = async (params: ListOfferParams) => {
 
@@ -75,5 +93,4 @@ export const listOffersMock = () => {
         "numberOfElements": 2,
         "empty": false
     }
-
-}
+};

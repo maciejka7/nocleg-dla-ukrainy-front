@@ -39,7 +39,7 @@ export const LastOfferSection = (props: Props) => {
 
   React.useEffect(() => {
     getCategories()
-      .then(response => { 
+      .then((response: any) => { 
         if(response.status === 200 && response.data && 'data' in response) {
           setCategories(response.data)
           setCurrentCategory(response.data[0]);   
@@ -59,7 +59,7 @@ export const LastOfferSection = (props: Props) => {
         Ostatnie ogłoszenia:
       </Heading>
       <Text textAlign="center" size="xl" color={"gray.600"} mt={4}>
-        Przeglądaj najnowesze ogłoszenia dodane przez naszych użytkowników
+        Przeglądaj najnowsze ogłoszenia dodane przez naszych użytkowników
       </Text>
       
       <Tabs isFitted variant='enclosed' mt={4}>
