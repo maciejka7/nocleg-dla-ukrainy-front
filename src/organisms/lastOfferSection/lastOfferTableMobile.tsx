@@ -28,7 +28,10 @@ const LastOfferTableMobile = (props: Props) => {
             mb={4}
           >
             <SimpleGrid columns={2} spacing={10} mb={4}>
-              <ListItem data={item.location} label="Lokalizacja" />
+            <ListItemSpace
+                data={{ from: item.voivodeship, to: item.city }}
+                label="Lokalizacja"
+              />
               <ListItem data={item.title} label="Tytuł" />
             </SimpleGrid>
             <SimpleGrid columns={2} spacing={10} mb={4}>

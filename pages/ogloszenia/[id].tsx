@@ -24,7 +24,7 @@ const OfferDetails = (props: Props) => {
   const router = useRouter();
   const { id } = router.query;
 
-  const [currentOffer, setCurrentOffer] = useState<any>();
+  const [currentOffer, setCurrentOffer] = useState<Offer>();
 
   React.useEffect(() => {
     if (id && typeof id === "string") {
@@ -36,8 +36,6 @@ const OfferDetails = (props: Props) => {
       }
     }
   }, [id, router, currentOffer]);
-
-  console.log(currentOffer);
 
   return (
     <div>
@@ -90,7 +88,6 @@ const OfferDetails = (props: Props) => {
           </Stack>
         </Box>
       </Center>
-      ))
     </div>
   );
 };

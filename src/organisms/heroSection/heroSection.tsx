@@ -7,6 +7,7 @@ import {
   Heading,
   Stack,
   Text,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { FaFacebook } from "react-icons/fa";
 import Image from "next/image";
@@ -14,11 +15,15 @@ import React from "react";
 import { HeroSectionContainer } from "./heroSection.styles";
 
 import HeroFlag from "../../../public/assets/images/ua-hero-image.jpg";
-import { appCustomTheme } from "../../utils";
+import { appCustomTheme, getBreakpoints } from "../../utils";
 
 type Props = {};
 
-const HeroSection = (props: Props) => {
+export const HeroSection = (props: Props) => {
+
+  const [isDekstop] = useMediaQuery(getBreakpoints.query.desktop);
+  const [isTablet] = useMediaQuery(getBreakpoints.query.tablet);
+
   return (
     <>
       <HeroSectionContainer>
@@ -48,22 +53,25 @@ const HeroSection = (props: Props) => {
                 <br />
               </Heading>
               <Text color="gray.500">
-                Wiarygodne źródło ofert pracy, wsparcia dla osób, które pochodzą z Ukrainy.
+                Wiarygodne źródło ofert wsparcia dla osób, które pochodzą z Ukrainy.
 
               </Text>
+              
               <Stack
                 justifyContent="center"
                 spacing={{ base: 4, sm: 6 }}
                 direction={{ base: "row", sm: "row" }}
               >
                 <Center p={8}>
+
                   <Button
                     w="full"
                     maxW="md"
                     colorScheme="facebook"
                     leftIcon={<FaFacebook />}
-                  >
+                    >
                     <Center>
+                    
                       <Text>Zaloguj przez Facebook</Text>
                     </Center>
                   </Button>
@@ -77,6 +85,7 @@ const HeroSection = (props: Props) => {
               position="relative"
               w="full"
             >
+              {(isDekstop || isTablet) && 
               <Box
                 position="relative"
                 height="300px"
@@ -85,8 +94,9 @@ const HeroSection = (props: Props) => {
                 width="full"
                 overflow="hidden"
               >
-                <Image alt="Hero Image" src={HeroFlag} layout="fill" />
+                 <Image alt="Hero Image" src={HeroFlag} layout="fill" /> 
               </Box>
+              }
             </Flex>
           </Stack>
         </Container>
@@ -94,5 +104,3 @@ const HeroSection = (props: Props) => {
     </>
   );
 };
-
-export default HeroSection;

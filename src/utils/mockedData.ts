@@ -1,6 +1,7 @@
 import { Offer } from "../services/addOffer.types";
 
 export const getOfferById = (id: string) => {
+  categoryId: ""
     const { content } = mockedData;
     return content.find(offer => {
         if('id' in offer && typeof offer.id === 'string') {            
@@ -18,11 +19,13 @@ export const mockedData: MockedDataResponst = {
     content: [
       {
         id: "86ff8179-fb1e-4156-88f2-b8dd5b97b532",
+        categoryId: "a21577a9-412e-4269-b6e7-e6369078ab22",
         title: "title",
         description: "desc",
         telephone: "tel",
         contactName: "contact",
-        location: "locale",
+        voivodeship: "locale",
+        city: "City",
         freeSpaceFrom: 4,
         freeSpaceTo: 8,
         active: true,
@@ -30,11 +33,13 @@ export const mockedData: MockedDataResponst = {
       },
       {
         id: "86ff8179-fb1e-4156-f288-b8dd5b97b532",
+        categoryId: "81b84c69-1c9a-418f-8538-66e47041a65a",
         title: "title 2",
         description: "desc 2",
         telephone: "tel 2",
         contactName: "contact 2",
-        location: "locale 2",
+        voivodeship: "locale 2",
+        city: "City",
         freeSpaceFrom: 14,
         freeSpaceTo: 18,
         active: false,
@@ -42,11 +47,13 @@ export const mockedData: MockedDataResponst = {
       },
       {
         id: "86ff8123-fb1e-4156-f288-b8dd5b97b532",
+        categoryId: "a21577a9-412e-4269-b6e7-e6369078ab22",
         title: "title 3",
         description: "desc 3",
         telephone: "tel 3",
         contactName: "contact 3",
-        location: "locale 3",
+        voivodeship: "locale 3",
+        city: "City",
         freeSpaceFrom: 14,
         freeSpaceTo: 18,
         active: false,
@@ -54,11 +61,13 @@ export const mockedData: MockedDataResponst = {
       },
       {
         id: "86ff8321-fb1e-4156-f288-b8dd5b97b532",
+        categoryId: "81b84c69-1c9a-418f-8538-66e47041a65a",
         title: "title 4",
         description: "desc 4",
         telephone: "tel 4",
         contactName: "contact 4",
-        location: "locale 4",
+        voivodeship: "locale 4",
+        city: "City",
         freeSpaceFrom: 14,
         freeSpaceTo: 18,
         active: false,

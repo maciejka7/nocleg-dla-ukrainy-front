@@ -1,6 +1,6 @@
 import { Flex, Text } from "@chakra-ui/react";
 
-type ListItemSpaceProps = {label: string, data: { from: number, to: number}};
+type ListItemSpaceProps = {label: string, data: { from: number | string, to: number | string}};
 
 export const ListItemSpace = (props: ListItemSpaceProps) => {
 

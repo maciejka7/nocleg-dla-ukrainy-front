@@ -1,2 +1,2 @@
-export { createOffertRequest } from "./addOffer"
+export { createOffer } from "./offerServices"
 export { signinFacebook } from "./signin"

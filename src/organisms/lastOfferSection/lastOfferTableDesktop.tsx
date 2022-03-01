@@ -38,7 +38,7 @@ const LastOfferTableDesktop = (props: Props) => {
         <Tbody>
           {data.map((item) => (
             <Tr key={item.id}>
-              <Td>{item.location}</Td>
+              <Td>{item.voivodeship} - {item.city}</Td>
               <Td>{item.title}</Td>
               <Td isNumeric>
                 {item.freeSpaceFrom}-{item.freeSpaceTo}

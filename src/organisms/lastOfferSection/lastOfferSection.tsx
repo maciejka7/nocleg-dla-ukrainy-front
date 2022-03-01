@@ -14,7 +14,7 @@ import LastOfferTableTablet from "./lastOfferTableTablet";
 
 type Props = {};
 
-const LastOfferSection = (props: Props) => {
+export const LastOfferSection = (props: Props) => {
   const [isTablet] = useMediaQuery(getBreakpoints.query.tablet);
   const [isDekstop] = useMediaQuery(getBreakpoints.query.desktop);
 
@@ -33,5 +33,3 @@ const LastOfferSection = (props: Props) => {
     </Flex>
   );
 };
-
-export default LastOfferSection;
