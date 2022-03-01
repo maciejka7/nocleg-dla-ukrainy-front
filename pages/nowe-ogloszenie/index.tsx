@@ -63,12 +63,14 @@ const NewOfferPage = (props: Props) => {
       freeSpaceTo: sliderValue[1],
     };
     delete dataToSend.confirmTelephone;
-    createOffer(dataToSend);
-    console.log(dataToSend);
-    setTimeout(() => {
-      setIsLoading(false);
-      router.push("/dodano-ogloszenie");
-    }, 2000);
+    createOffer(dataToSend)
+      .then(response => { console.log(response.data) })
+      .catch(error => { console.log(error) });
+    // console.log(dataToSend);
+    // setTimeout(() => {
+    //   setIsLoading(false);
+    //   router.push("/dodano-ogloszenie");
+    // }, 2000);
   };
 
   const handleSelectChange = (e: BaseSyntheticEvent, name: string) => {
