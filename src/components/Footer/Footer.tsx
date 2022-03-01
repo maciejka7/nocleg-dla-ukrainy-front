@@ -5,18 +5,22 @@ import {
     Link,
     SimpleGrid,
     Stack,
-    Text,
     VisuallyHidden,
     Input,
     IconButton,
     useColorModeValue,
+    Text,
+    Flex,
   } from '@chakra-ui/react';
-  import { ReactNode } from 'react';
+  import React, { ReactNode } from 'react';
   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
   import { BiMailSend } from 'react-icons/bi';
   
 import UAFlag from "../../../public/assets/images/flag-ukraine.png";
 import Image from 'next/image';
+import axios from 'axios';
+import { string } from 'yup';
+import { CheckCircleIcon } from '@chakra-ui/icons';
   
   const Logo = (props: any) => {
     return (
@@ -108,7 +112,23 @@ import Image from 'next/image';
   </Stack>
   )
   
+type StatusResponse = {
+  groups?: string[],
+  status?: string,
+}
+
   export function Footer() {
+
+    const [ healthCheck, setHealthCheck] = React.useState<StatusResponse>({})
+
+    React.useEffect(() => { 
+      axios
+        .get('http://api.pomagamukrainie.org/actuator/health')
+        .then(response => setHealthCheck(response.data))
+        .catch(error => { console.log(error) })
+        
+     }, []);
+
     return (
       <Box
         bg={useColorModeValue('gray.50', 'gray.900')}
@@ -135,13 +155,9 @@ import Image from 'next/image';
               <Link href={'/ogloszenia'}>Przeglądaj ogłoszenia</Link>
               
             </Stack>
-            <Stack align={'flex-start'}>
-              <Link href={'/logowanie'}>Logowanie</Link>
-              <Link href={'/przypomnij-haslo'}>Przypomnij hasło</Link>
-              <Link href={'/rejestracja'}>Rejestracja</Link>
-              <Link href={'/resetuj-haslo'}>Reset hasła</Link>
-              
-            </Stack>
+            <Flex direction="row" align="center">
+              <Text fontSize='xs'>server status: </Text> {healthCheck.status && <CheckCircleIcon color="green.500"/> }              
+            </Flex>
             
           </SimpleGrid>
         </Container>
