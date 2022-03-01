@@ -1,4 +1,4 @@
-export const apiURL = `http://api.pomagamukrainie.org`
+export const apiURL = `https://api.pomagamukrainie.org`
 
 export const endpoints = {
     signinFacebook: `${apiURL}/signin/facebook`,

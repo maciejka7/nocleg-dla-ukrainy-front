@@ -7,7 +7,7 @@ export const createOffer = (offer: AddOfferFormData ) => {
     console.log(offer);
     
     axios
-        .post(endpoints.createOffer, offer, {headers: {'Content-Type': 'application/json'}})
+        .post(endpoints.createOffer, offer)
         .then(response => { console.log(response.data) })
         .catch(error => { console.log(error) })
 }
