@@ -6,7 +6,7 @@ type Props = {};
 
 const LoginButton = (props: Props) => {
   return (
-    <Link href="/login" passHref>
+    <Link href="/logowanie" passHref>
       <a>
         <Button colorScheme="blue" variant="outline">
           Login

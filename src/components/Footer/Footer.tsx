@@ -135,6 +135,13 @@ import Image from 'next/image';
               <Link href={'/ogloszenia'}>Przeglądaj ogłoszenia</Link>
               
             </Stack>
+            <Stack align={'flex-start'}>
+              <Link href={'/logowanie'}>Logowanie</Link>
+              <Link href={'/przypomnij-haslo'}>Przypomnij hasło</Link>
+              <Link href={'/rejestracja'}>Rejestracja</Link>
+              <Link href={'/resetuj-haslo'}>Reset hasła</Link>
+              
+            </Stack>
             
           </SimpleGrid>
         </Container>
